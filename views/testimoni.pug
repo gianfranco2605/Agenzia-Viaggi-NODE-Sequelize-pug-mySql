@@ -1,0 +1,34 @@
+extends ./layout/index
+
+block contenido 
+    main.container.mt-5 
+        h1.text-center.mt-5 #{pagina}
+        //- SISTEMARE DATABASE
+        //- blockquote.text-center Legge le nostre recessioni 
+        //- include ./layout/bloco_testimoniali   
+        .row   
+
+            .row.justify-content-center.col-12
+               .col-md-6
+                    h2.d-block.w-100.text-center Aggiungi la tua Esperienza
+
+                    if(errore)
+                            each error in errore 
+                                .alert.col.alert-danger.text-center=error.messaggio
+
+
+            .row.justify-content-center.col-12 
+                .col-md-6  
+                    form(action="/testimoni" method="POST")
+                        .form-group 
+                            label(for="nome") Nome  
+                            input#nome(type="text", placeholder="Tuo Nome", name="nome", class="form-control" value= nome)
+                        .form-group 
+                            label(for="mail") Mail  
+                            input#mail(type="text", placeholder="Tua Mail", name="mail", class="form-control" value= mail)
+                        .form-group 
+                            label(for="messaggio") Messaggio  
+                            textarea#messaggio(class="form-control", name="messaggio", placeholder="Tuo Messaggio", rows= 3 messaggio)= messaggio
+
+                        input.btn.btn-success.btn-block(type="submit")            
+            

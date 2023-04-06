@@ -28,6 +28,9 @@ app.use((req, res, next) => {
     return next();
 })
 
+//Aggiunger body parser per leggere i dati formulario
+app.use(express.urlencoded({extended:true}));
+
 //Cartella publica 
 app.use(express.static('public'));
 

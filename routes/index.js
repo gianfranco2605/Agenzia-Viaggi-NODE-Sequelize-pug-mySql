@@ -1,30 +1,25 @@
 import express from "express";
+import { paginaInizio, 
+        paginaNoi, 
+        paginaTestimoni, 
+        paginaViaggi, 
+        paginaDetaglioViaggi }  from "../controllers/pagineController.js";
+
+import { diconoDiNoi } from "../controllers/diconoDiNoControlleri.js";        
 
 const router = express.Router()
 
-router.get('/', (req, res) => { // req- lo q enviamos, res lo q express nos responde
-    res.render("inizio", {
-        pagina: 'Inicio'
-    });
-});
+router.get('/', paginaInizio);
 
-router.get('/noi', (req, res) => { 
-    res.render("noi", { 
-        pagina: 'Noi'
-     });
-});
+router.get('/noi', paginaNoi );
 
-router.get('/viaggi', (req, res) => { 
-    res.render("noi", { 
-        pagina: 'Viaggi'
-     });
-});
+router.get('/viaggi', paginaViaggi );
 
-router.get('/testimoni', (req, res) => { 
-    res.render("noi", { 
-        pagina: 'Testimoni'
-     });
-});
+router.get('/viaggi/:slug', paginaDetaglioViaggi );
+
+router.get('/testimoni', paginaTestimoni);
+
+router.post('/testimoni', diconoDiNoi);
 
 
 
